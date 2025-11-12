@@ -35,11 +35,14 @@ php artisan migrate
 
 ### 4️⃣ Run the Laravel serverBashphp artisan serve --host=127.0.0.1 --port=8000
 Then open your browser:http://127.0.0.1:8000/api/profiles
+---
 
-#### 🌍 Expose the API Publicly with ngrokStart ngrok (in another terminal):Bashngrok http 8000
-Copy the public forwarding URL, for example:https://xyz-1234.ngrok-free.appReplace that base URL in the examples below.
 
-#### 🧪 API EndpointsMethodEndpointDescriptionPOST/api/profilesCreate a new profileGET/api/profile/{id}Get a profile by IDGET/api/profilesList all profilesPATCH/api/profile/{id}Update profile fields
+
+#### 🧪 API EndpointsMethodEndpointDescription
+POST/api/profilesCreate a new profileGET/api/profile/{id}
+Get a profile by IDGET/api/profiles - List all profiles
+PATCH/api/profile/{id} - Update profile fields
 
 #### 🟢 Create a ProfilePowerShell$body = @{ username="john_doe"; email="john@example.com"; bio="Software engineer" }| ConvertTo-JsonInvoke-RestMethod -Method Post -Uri "[https://XYZ-1234.ngrok-free.app/api/profiles](https://XYZ-1234.ngrok-free.app/api/profiles)" -Body $body -ContentType "application/json" -Headers @{Accept="application/json"}
 
@@ -49,8 +52,16 @@ Copy the public forwarding URL, for example:https://xyz-1234.ngrok-free.appRepla
 
 #### 🟠 Update a ProfilePowerShell$update = @{ bio="Senior developer" } | ConvertTo-JsonInvoke-RestMethod -Method Patch -Uri "[https://XYZ-1234.ngrok-free.app/api/profile/1](https://XYZ-1234.ngrok-free.app/api/profile/1)" -Body $update -ContentType "application/json" -Headers @{Accept="application/json"}
 
-#### These requests can also be tested easily using Postman with headers: Accept: application/json and Content-Type: application/json.✅ Example ResponsesPOST /api/profilesJSON{ "id": 1 }
-GET /api/profile/1JSON{
+#### These requests can also be tested easily using Postman with headers: 
+Accept: application/json and Content-Type: application/json.
+
+#### ✅ Example Responses
+
+POST /api/profilesJSON{ "id": 1 }
+
+GET /api/profile/1
+
+JSON{
   "id": 1,
   "username": "john_doe",
   "email": "john@example.com",
@@ -63,21 +74,11 @@ GET /api/profile/1JSON{
 
 #### 🧾 Verification StepsOpen the active ngrok URL, e.g. https://xyz-1234.ngrok-free.app/api/profiles.Send a POST request to create a profile.Refresh the GET /api/profiles endpoint — the new record should appear.Fetch the profile by ID with GET /api/profile/1.Update it using PATCH and confirm the change.
 
-#### 📦 Project Structure
-
-app/
- ├── Http/
- │    └── Controllers/ProfileController.php
- ├── Profile.php
-database/
- ├── migrations/
- │    └── 2025_11_10_000000_create_profiles_table.php
- └── database.sqlite
-routes/
- └── api.php
+---
 
 ### 👤 Author: Carlos Guízar
 
-#### 🟢 Submitted as a Backend Engineering Take-Home Challenge⚠️ Important Note:The ngrok session is temporary — once it expires, the public URL stops working.If you try to access the endpoints and the URL no longer responds, please contact me directly so I can reactivate ngrok and share a new live URL for testing.
+#### 🟢 Submitted as a Backend Engineering Take-Home Challenge
 
-To restart it locally:Bashngrok http 8000
+#### ⚠️ Important Note:The ngrok session is temporary — once it expires, the public URL stops working.If you try to access the endpoints and the URL no longer responds, please contact me directly so I can reactivate ngrok and share a new live URL for testing.
+
